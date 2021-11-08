@@ -1,0 +1,155 @@
+{% include "main/base.html" %}
+
+<div class="container">
+    
+<button type="button" class="btn btn-success"><a href="add">Add Company</a></button>
+<button type="button" class="btn btn-success">View PDF</button>
+<button type="button" class="btn btn-info">Blue Heaven</button>
+<button type="button" class="btn btn-primary">Others</button>
+
+<div class="card-icon">
+    <i class="material-icons">assignment</i>
+  </div>
+  <h4 class="card-title">Schedule of Investments</h4>
+</div>
+    <div class="row">
+     
+        <div class="col">
+            <div class="col-md-12">
+                <!-- id="product-table" is for ajax crud-->
+                <table id="datatables"
+                    class="table table-sm table-responsive-sm table-hover table-striped text-nowrap table-bordered"
+                    width="100%">
+                    <thead class="thead-darkcyan" style="background-color: darkcyan; color: white;">
+                  <tr>
+
+                  <th>Profile</th>
+
+                  <th>Company Name</th>
+                  <th>Fund Ownership</th>
+                  <th>Initial Investment Date</th>
+                  <th>Initial Investment</th>
+                  <th>Total Invested</th>
+                  <th>Reported Value End Of Q2</th>
+                  <th>Unrealised gain</th>
+                  <th>MOIC</th>
+                  <th>Year</th>
+                  <th>Actions</th>
+
+
+                        </tr>
+                    </thead>
+
+                    <tbody id="get_table_body">
+                        <!--get_table_body is for ajax search-->
+
+
+                     
+
+                        <tr>
+
+                            {%for investment in investments%}
+                
+                            <td>{{investment.image}}</td>
+          
+                            <td>{{investment.company_name}}</td>
+                            <td>{{investment.fund_ownership}}</td>
+                            <td>{{investment.initial_investment_date}}</td>
+                            <td>{{investment.initial_investment}}</td>
+                            <td>{{investment.total_invested}}</td>
+                            <td>{{investment.reported_value_end_of_Q2}}</td>
+                            <td>{{investment.unrealised_gain}}</td>
+                            <td>{{investment.MOIC}}</td>
+                            <td>{{investment.year}}</td>
+
+
+                            <td>
+                                <button type="button"  data-pid="{{investment.id}}" data-target="#AddInvestment"
+                                    data-toggle="modal" class="btn btn-success btn-sm btn-edit ">
+                                    <mat-icon>Edit</mat-icon></button>
+
+                               
+                                    <a href="{%url 'main:delete_investment' id=investment.id%}">  <button type="button" data-pid="{{investment.id}}"
+                                        class="ml-1 btn btn-danger btn-sm btn-del">
+                                        
+                                        delete
+                                        
+                                        
+                                        </button></a> 
+                               
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="7" class=" text-center alert alert-danger">No Product Found</td>
+                        </tr>
+
+                        {% endfor %}
+
+
+
+                    </tbody>
+                </table>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

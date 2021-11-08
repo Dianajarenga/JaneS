@@ -1,0 +1,34 @@
+{% include 'main/base.html' %}
+
+<body>
+
+  <div className="home-cards">
+    <div class = "card">
+       <div class="about-content"> 
+    <section class="skewbox">
+     <div class="content">
+
+  <form method ="post" action="">
+      {% csrf_token %}
+      <i id="danger" class="fa fa-times-circle" style="font-size:88px;color:red"></i>
+      <h1>Are you sure<h1><br>
+
+      <p>Do you really want to delete these details? This process cannot be undone</p>
+
+      <div class="action">
+
+      <button id="cancel"><a href="{% url 'main:investment_list' %}">Cancel</a></button>
+         <input class="btn btn-danger" type="submit" value="Delete" />
+        </div>
+      
+   
+  </form>
+</div>
+         
+</section>
+
+</div>
+</div>
+</div>
+</body>
+</html>

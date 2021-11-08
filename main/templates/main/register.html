@@ -1,0 +1,117 @@
+{% extends "main/header.html" %}
+
+{% block content %} 
+
+{% load crispy_forms_tags %}         
+
+<!--Register--> 
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="https://appsrv1-147a1.kxcdn.com/material-dashboard-pro/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="https://appsrv1-147a1.kxcdn.com/material-dashboard-pro/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <title>
+    Jane Street Capital
+  </title>
+  
+  <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- CSS Files -->
+  <link href="https://appsrv1-147a1.kxcdn.com/material-dashboard-pro/css/material-dashboard.min.css?v=2.1.2" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="https://appsrv1-147a1.kxcdn.com/material-dashboard-pro/demo/demo.css" rel="stylesheet" />
+
+  <!-- Specific Page CSS goes HERE  -->  
+  
+
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body class="bg-primary">
+	
+
+
+
+<nav class="navbar navbar-expand-lg bg-primary" >
+	<div class="container" >
+	  <a class="navbar-brand" href="#">JaneStreetCapital</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+	  <span class="sr-only">Toggle navigation</span>
+	  <span class="navbar-toggler-icon"></span>
+	  <span class="navbar-toggler-icon"></span>
+	  <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+		<ul class="navbar-nav">
+		  <li class="nav-item active">
+			<a class="nav-link" href="land">Home <span class="sr-only">(current)</span></a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="login">Login</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="register">SignUp</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="#">Contact</a>
+		  </li>
+	
+		  </li>
+		</ul>
+	  </div>
+	</div>
+  </nav>
+
+<style>
+
+	input{
+		padding-left: 20ch;
+		border-radius: 20px;
+
+	}
+
+form{padding-top: 0ch;
+		font-size: small;
+		height:100%;
+	}
+</style>
+
+  <section class="myform-area bg-primary" style="padding-top: 0ch; text-size-adjust: 1%;"  >
+    <section class="myform-area " >
+    <div class="container ">
+	
+			<div class="col-lg-12 ">
+				<div class="m">
+	<h1>Register</h1>
+	<form method="POST">
+		{% csrf_token %}
+		{{ register_form|crispy }}                    
+		<button class="btn btn-primary" type="submit">Register</button>
+	</form><hr>
+	<p class="text-center">If you already have an account, <a href="/login" >login</a> instead.</p>
+
+</div>
+</div>
+</div>
+</section>
+</section>
+{% endblock %}
+</body>

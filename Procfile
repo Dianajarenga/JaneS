@@ -1,0 +1,1 @@
+web: gunicorn JaneStreet.wsgi --log-file -

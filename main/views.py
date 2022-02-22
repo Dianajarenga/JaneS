@@ -1,11 +1,11 @@
 from django.http.response import BadHeaderError, HttpResponse,JsonResponse
 from django.core.mail import send_mail, BadHeaderError
 
-from .models import Investment
+from .models import Investment, Investments
 
 # Create your views here.
 from django.shortcuts import  render, redirect
-from .forms import ContactForm, NewUserForm, ScheduleOfInvestmentForm
+from .forms import ContactForm, InvestmentForm, NewUserForm, ScheduleOfInvestmentForm
 from django.contrib.auth import login, authenticate,logout
 from django.contrib import messages
 
@@ -140,28 +140,68 @@ def investment(request):
 def register_investment(request):
     if request.method =="POST":
       form=ScheduleOfInvestmentForm(request.POST , request.FILES)
-      
+      form=InvestmentForm(request.POST , request.FILES)
       if form.is_valid():
           form.save()
       else:
           print(form.errors)
     else:
         form=ScheduleOfInvestmentForm()
+        form=InvestmentForm()
+
     return render(request,"main/investmentform.html",{"form":form})
+
+
+
+def register_investments(request):
+    if request.method =="POST":
+      form=ScheduleOfInvestmentForm(request.POST , request.FILES)
+      form=InvestmentForm(request.POST , request.FILES)
+      if form.is_valid():
+          form.save()
+      else:
+          print(form.errors)
+    else:
+        form=ScheduleOfInvestmentForm()
+        form=InvestmentForm()
+
+    return render(request,"main/investmentform.html",{"form":form})
+
+
+
+
+
 
 def investment_list(request):
     investments=Investment.objects.all()
     return render(request,"main/investments.html",{"investments":investments})
 
+
+
+
+
+
+
+
+
+def bluehaven_list(request):
+    investments=Investments.objects.all()
+    return render(request,"main/blueheaven.html",{"investments":investments})
+
 def edit_investment(request,id):
     investment=Investment.objects.get(id=id)
     if request.method=="POST":
         form=ScheduleOfInvestmentForm(request.POST,instance=investment)
+        form=InvestmentForm(request.POST,instance=investment)
+
         if form.is_valid():
             form.save()
+
     else:
             form=ScheduleOfInvestmentForm(instance=investment)
-    return render(request,"edit_investment.html",{"form":form})
+            form=InvestmentForm(instance=investment)
+
+    return render(request,"main/edit_investment.html",{"form":form})
     
 def investment_profile(request,id):
     investment=Investment.objects.get(id=id)
@@ -180,4 +220,23 @@ def delete_investment(request,id):
 def landingpage(request):
     landingpage  #queryset containing all books we just created
     return render(request=request, template_name="main/landing.html", context={'landingpage':landingpage})  
+from django.shortcuts import  render
+from django.core.files.storage import FileSystemStorage
 
+def upload(request):
+    if request.method == 'POST' and request.FILES['upload']:
+        upload = request.FILES['upload']
+        fss = FileSystemStorage()
+        file = fss.save(upload.name, upload)
+        file_url = fss.url(file)
+        return render(request, 'main/upload.html', {'file_url': file_url})
+    return render(request, 'main/upload.html')
+from django import template
+from django.template.defaultfilters import stringfilter
+
+register = template.Library()
+@register.filter(name='subtract')
+@stringfilter
+
+def subtract(value, arg):
+    return value - arg

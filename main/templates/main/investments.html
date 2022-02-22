@@ -4,7 +4,7 @@
     
 <button type="button" class="btn btn-success"><a href="add">Add Company</a></button>
 <button type="button" class="btn btn-success">View PDF</button>
-<button type="button" class="btn btn-info">Blue Heaven</button>
+<button type="button" class="btn btn-info">Blue Haven</button>
 <button type="button" class="btn btn-primary">Others</button>
 
 <div class="card-icon">
@@ -47,7 +47,7 @@
                      
 
                         <tr>
-
+                            {% load mathfilters %}
                             {%for investment in investments%}
                 
                             <td>{{investment.image}}</td>
@@ -58,15 +58,15 @@
                             <td>{{investment.initial_investment}}</td>
                             <td>{{investment.total_invested}}</td>
                             <td>{{investment.reported_value_end_of_Q2}}</td>
-                            <td>{{investment.unrealised_gain}}</td>
+                            <td>{{investment.reported_value_end_of_Q2|sub:investment.total_invested}}</td>
                             <td>{{investment.MOIC}}</td>
                             <td>{{investment.year}}</td>
 
 
                             <td>
-                                <button type="button"  data-pid="{{investment.id}}" data-target="#AddInvestment"
+                                <a href="{%url 'main:edit_investment' id=investment.id%}">   <button type="button"  data-pid="{{investment.id}}" data-target="#AddInvestment"
                                     data-toggle="modal" class="btn btn-success btn-sm btn-edit ">
-                                    <mat-icon>Edit</mat-icon></button>
+                                    Edit</button></a>
 
                                
                                     <a href="{%url 'main:delete_investment' id=investment.id%}">  <button type="button" data-pid="{{investment.id}}"

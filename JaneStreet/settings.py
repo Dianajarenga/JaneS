@@ -23,14 +23,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-6c4@i=_#6!jdm7$5g!x(y6()5per5z$d@4ti0h45i@!cr=@12n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['http://127.0.0.1:8000/land' ,'127.0.0.1','https://jane-street-capital.herokuapp.com/' ]
+ALLOWED_HOSTS = ['http://127.0.0.1:8000/land' ,'127.0.0.1','https://jane-street-capital.herokuapp.com/', '.herokuapp.com' ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'main.apps.MainConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,13 +40,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
      'crispy_forms',
+     'bluehaven',
+     'kawisafi',
+     'api',
   
    
 ]
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+   
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -53,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 MIDDLEWARE = [
@@ -95,6 +102,16 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
+
+
+
+
+
 
 
 # Password validation
@@ -156,3 +173,7 @@ STATICFILES_DIRS = (
 
 #  Add configuration for static files storage using whitenoise
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')

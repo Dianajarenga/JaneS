@@ -43,6 +43,8 @@ class ScheduleOfInvestmentForm(forms.ModelForm):
 widget={
     "company_name":forms.NumberInput(attrs={"class":"form-control"}),
     "fund_ownership":forms.NumberInput(attrs={"class":"form-control"}),
+    
+    
     "initial_investment_date":forms.DateInput(attrs={"class":"form-control"}),
     "initial_investment":forms.NumberInput(attrs={"class":"form-control"}),
     "total_invested":forms.NumberInput(attrs={"class":"form-control"}),
@@ -52,4 +54,25 @@ widget={
     "year":forms.DateInput(attrs={"class":"form-control"}),
     "image":forms.FileInput(attrs={"class":"form-control"}),
 }  
-     
+class InvestmentForm(forms.ModelForm):
+    class Meta:
+        model=Investment
+        fields="__all__"
+widget={
+    "company":forms.NumberInput(attrs={"class":"form-control"}),
+    "company_name":forms.NumberInput(attrs={"class":"form-control"}),
+
+    "total_commited":forms.NumberInput(attrs={"class":"form-control"}),
+    "net_investment":forms.DateInput(attrs={"class":"form-control"}),
+    "total_bhi_shares_remaining":forms.NumberInput(attrs={"class":"form-control"}),
+    "latest_share_price":forms.NumberInput(attrs={"class":"form-control"}),
+    "fair_market_value":forms.NumberInput(attrs={"class":"form-control"}),
+    "total_coc_returns":forms.NumberInput(attrs={"class":"form-control"}),
+    "year":forms.DateInput(attrs={"class":"form-control"}),
+    "image":forms.FileInput(attrs={"class":"form-control"}),
+}  
+from django import forms
+
+class UploadFileForm(forms.Form):
+    title = forms.CharField(max_length=50)
+    file = forms.FileField()

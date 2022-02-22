@@ -1,0 +1,206 @@
+{% include "main/base.html" %}
+
+<div class="container">
+    
+<button type="button" class="btn btn-success"><a href="/blue/register">Add Company</a></button>
+<button type="button" class="btn btn-success"><a href="upload">PDF</a></button>
+<button type="button" class="btn btn-info">Debt investments</button>
+<button type="button" class="btn btn-primary">Kawi Safi</button>
+
+<div class="card-icon">
+    <i class="material-icons">assignment</i>
+  </div>
+  <h4 class="card-title">Equity Investments</h4>
+  <p>Expected Returns Dashboard</p>
+</div>
+    <div class="row">
+     
+        <div class="col">
+            <div class="col-md-12">
+                <!-- id="product-table" is for ajax crud-->
+                <table id="datatables"
+                    class="table table-sm table-responsive-sm table-hover table-striped text-nowrap table-bordered"
+                    width="100%">
+                    <thead class="thead-darkcyan" style="background-color: darkblue; color: white;">
+                  <tr>
+
+                  <th>Profile</th>
+
+                  <th>Company Name</th>
+                  <th>Total $ Committed</th>
+
+                  <th>Net investment
+                    ($ committed ‐ 
+                    returned)</th>
+                    
+                  <th>Total BHI Shares
+                    remaining($)</th>
+                  <th>Latest Share Price ($)</th>
+            
+                  <th>Fair Market Value (remaining investment)</th>
+                  <th>Total CoC Returns(%)</th>
+                  <th>Year</th>
+                  <th>Actions</th>
+
+
+                        </tr>
+                    </thead>
+
+                    <tbody id="get_table_body">
+                        <!--get_table_body is for ajax search-->
+
+
+                     
+
+                        <tr>
+
+                            {%for bluehaven in bluehaven%}
+                
+                            <td>{{bluehaven.image}}</td>
+          
+                            <td>{{bluehaven.company}}</td>
+                            <td>{{bluehaven.total_commited}}</td>
+                         
+                            <td>{{bluehaven.net_investment}}</td>
+                            <td>{{bluehaven.total_bhi_shares_remaining}}</td>
+                            <td>{{bluehaven.latest_share_price}}</td>
+                            <td>{{bluehaven.fair_market_value}}</td>
+
+                            <td>{{bluehaven.total_coc_returns}}</td>
+                            <td>{{bluehaven.year}}</td>
+
+
+
+
+                            <td>
+                                <a href="{%url 'edit_bluehaven' id=bluehaven.id%}">   <button type="button"  data-pid="{{bluehaven.id}}" data-target="#AddBluehaven"
+                                    data-toggle="modal" class="btn btn-success btn-sm btn-edit ">
+                                    Edit</button></a>
+
+                               
+                                    <a href="{%url 'delete_bluehaven' id=bluehaven.id%}">  <button type="button" data-pid="{{bluehaven.id}}"
+                                        class="ml-1 btn btn-danger btn-sm btn-del">
+                                        
+                                        delete
+                                        
+                                        
+                                        </button></a> 
+                               
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="7" class=" text-center alert alert-danger">No Company Found</td>
+                        </tr>
+
+                        {% endfor %}
+
+
+
+                    </tbody>
+                </table>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

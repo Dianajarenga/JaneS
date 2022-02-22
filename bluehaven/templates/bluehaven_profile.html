@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Montserrat:wght@100&display=swap" rel="stylesheet">
+
+    <title>codeHive Registration</title>
+</head>
+<body style="background-color: #151B36;">
+  {% extends 'main:base.html' %}
+  {% block content %}
+  <div id="formbody" >
+
+  <div id="imgname">
+  <img id="courses" src="{{ student.image.url }}" width="270px" height="320px" >
+  <h1 style="font-size: 40px;color: rgb(77, 73, 77);;"><span style="font-size: larger; color: purple;"></span>{{bluehaven.company}}</h1>
+  <hr>
+  
+  <p style="font-size: 15px;color: rgb(77, 73, 77);;"><img id="phone" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfdhIprO1Kd3PlwoqSMZmeAMnF1iV1Y0R9SQ&usqp=CAU" width="20px" height="20px"><span style=" color: purple;">Email:</span>{{bluehaven.email}}</p>
+  <p style="font-size: 15px;color: rgb(77, 73, 77);;"><img id="phone" src="https://parlourhairlounge.ca/wp-content/uploads/2016/07/purple-phone-icon-md.png"  width="20px" height="20px"><span style="color: purple;">Phone Number:</span>{{bluehaven.phone_number}}</p>
+ 
+  </div>
+
+<div class="form" >
+  <p style="font-size: 15px;color: rgb(77, 73, 77);;"><span style=" color: purple;">company name:</span>{{bluehaven.first_name}}</p><hr>
+  <p style="font-size: 15px;color: rgb(77, 73, 77);;"><span style=" color: purple;">Total Commited:</span>{{bluehaven.total_commited}}</p><hr>
+  <p style="font-size: 15px;color: rgb(77, 73, 77);;"><span style=" color: purple;">Net Investment:</span>{{bluehaven.net_investment}}</p><hr>
+  <p style="font-size: 15px;color: rgb(77, 73, 77);;"><span style=" color: purple;">BHI Shares:</span>{{bluehaven.total_bhi_shares_remaining}}</p><hr>
+  <p style="font-size: 15px;color: rgb(77, 73, 77);;"><span style=" color: purple;">Latest Share Price:</span>{{bluehaven.latest_share_price}}</p><hr>
+  <p style="font-size: 15px;color: rgb(77, 73, 77);;"><span style=" color: purple;">Year:</span>{{bluehaven.year}}</p><hr>
+  <!-- <p style="font-size: 15px;color: rgb(77, 73, 77);;"><span style="color: purple;">Report:</span><a href="{{bluehaven.company_report.url}}">Download</a></p><hr> -->
+  <a id="edit" href="{% url 'delete_bluehaven' bluehaven.id %}">Delete</a>
+  <a id="edit" href="{% url 'edit_bluehaven' bluehaven.id %}">Edit</a>
+
+    
+     
+   
+</div>  
+</div>
+      <style>
+          body{      
+            background-color: #fcfcfd;      
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color:rgba(12, 61, 61, 0.741);
+            font-family: 'Poppins', sans-serif;
+            border-radius: 9px;
+        }
+        #edit{
+          padding: 10px;
+          color: white;
+          background-color: rgb(0, 58, 128);
+          border: solid 1px ;
+          border-radius: 10px;
+          float: right;
+          text-decoration: none;
+          font-size: 17px;
+        }
+          #phone{
+              margin-top: -1%;
+          }
+          p{
+            font-family: 'Montserrat', sans-serif;
+            margin-left: 2%;
+            padding: 2px;
+           
+
+          }
+        #courses{
+       
+          margin-top: 2%;
+          margin-left: 3%;
+          border-radius: 20px;
+        }
+        .pic{
+          height: 25%;
+          margin-top: -7%;
+          width: 35%;
+        }
+        #formbody{
+          background-color: white;
+          display: flex;
+          width: 1000px;
+          font-weight: bold;
+          margin-left: 16%;
+          border-radius: 3%;
+          height: 45%;   
+        }
+        #imgname{
+          margin-left: 3%;
+          margin-top: 3%;
+          width: 50%;
+        }
+        
+          body{
+        background:#fcfafb;
+       
+          }
+          
+          h1{
+           margin-top: 4%;
+          font-weight: bold;
+          font-family: 'Montserrat', sans-serif;
+         
+          
+          }
+          .form{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            font-size: 15px;
+            padding:30px;
+            width:700px;
+            height:auto;
+            overflow:hidden;
+            color: rgb(29, 2, 29);
+            border-radius:20px;
+         
+           
+          }
+          input{
+           width: 98%;
+           outline: none;
+           border: 1px solid rgb(121, 83, 121) ;
+           font-size: 13px;
+           padding: 7px 10px;
+           border-radius: 5px;  
+           font-family: 'Montserrat', sans-serif;
+           font-weight: bold;
+           display: flex;  
+           
+       }
+       #des{
+         height: 1%;
+         width: 98%;
+         font-weight: bold;
+       }
+      
+       
+      </style>
+  {% endblock content %}
+</body>
+</html>
